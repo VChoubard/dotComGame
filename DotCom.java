@@ -4,17 +4,15 @@ import java.util.ArrayList;
  * Created by vchoubard on 19/09/14.
  */
 public class DotCom {
-    ArrayList<Integer> locationCells = new ArrayList<Integer>();
+    ArrayList<String> locationCells = new ArrayList<String>();
+    String name;
 
-    public void setLocationCell(int[] cells) {
-        for (int cell : cells) {
-            locationCells.add(cell);
-        }
+    public void setLocationCell(ArrayList<String> cells) {
+            locationCells = cells;
     }
 
     public String checkYourself(String stringGuess) {
-        int guess = Integer.parseInt(stringGuess);
-        int index = locationCells.indexOf(guess);
+        int index = locationCells.indexOf(stringGuess);
         String result = "miss";
 
         if (index >= 0) {
@@ -22,12 +20,15 @@ public class DotCom {
 
             if (locationCells.isEmpty()) {
                 result = "kill";
+                System.out.println("Outch you sunk " + name + " :(");
             } else {
                 result = "hit";
             }
         }
-
-        System.out.println(result);
         return result;
+    }
+
+    public void setName(String s) {
+        name = s;
     }
 }
